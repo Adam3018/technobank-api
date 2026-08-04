@@ -13,7 +13,6 @@ class VisitorBase(BaseModel):
     clearance_level: str = Field(default="visitor", max_length=50)
     phone: Optional[str] = Field(None, max_length=50)
     notes: Optional[str] = Field(None, max_length=1000)
-    is_active: bool = True
 
 
 class VisitorCreate(VisitorBase):
@@ -29,7 +28,6 @@ class VisitorUpdate(BaseModel):
     clearance_level: Optional[str] = Field(None, max_length=50)
     phone: Optional[str] = Field(None, max_length=50)
     notes: Optional[str] = Field(None, max_length=1000)
-    is_active: Optional[bool] = None
 
 
 class Visitor(VisitorBase):

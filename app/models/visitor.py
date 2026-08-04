@@ -18,6 +18,5 @@ class Visitor(Base):
     clearance_level = Column(String(50), nullable=False, default="visitor")
     phone = Column(String(50), nullable=True)
     notes = Column(String(1000), nullable=True)
-    is_active = Column(Boolean, default=True, index=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
     updated_at = Column(DateTime(timezone=True), onupdate=func.now(), nullable=True)
