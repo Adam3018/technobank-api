@@ -28,7 +28,6 @@ from app.schemas import Visitor, VisitorCreate, VisitorUpdate
 
 from app.crud import (
     get_visitor,
-    get_visitors,
     create_visitor,
     update_visitor,
     delete_visitor,
@@ -83,9 +82,8 @@ def list_visitors(
         visitors = query.all()
         response.headers["Content-Range"] = f"visitors 0-{total_count-1}/{total_count}"
         response.headers["Access-Control-Expose-Headers"] = "Content-Range"
-
+        
     return visitors
-
 
 @router.post("", response_model=Visitor, status_code=status.HTTP_201_CREATED)
 def create_new_visitor(visitor: VisitorCreate, db: Session = Depends(get_db)):

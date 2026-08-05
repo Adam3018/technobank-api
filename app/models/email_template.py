@@ -13,7 +13,6 @@ class EmailTemplate(Base):
     name = Column(String(255), nullable=False, index=True)
     subject = Column(String(500), nullable=False)
     body = Column(Text, nullable=False)
-    placeholder_help = Column(Text, nullable=True)
     is_active = Column(Boolean, default=True, index=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
     updated_at = Column(DateTime(timezone=True), onupdate=func.now(), nullable=True)

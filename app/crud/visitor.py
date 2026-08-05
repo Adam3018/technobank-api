@@ -12,6 +12,11 @@ def get_visitor(db: Session, visitor_id: int) -> Visitor | None:
 def get_visitors(db: Session, skip: int = 0, limit: int = 100) -> list[Visitor]:
     return db.query(Visitor).offset(skip).limit(limit).all()
 
+def get_visitors_by_ids(db: Session, visitor_ids: list[int]) -> list[Visitor]:
+    """Retrieve multiple visitors matching a list of IDs."""
+    if not visitor_ids:
+        return []
+    return db.query(Visitor).filter(Visitor.id.in_(visitor_ids)).all()
 
 def create_visitor(db: Session, visitor: VisitorCreate) -> Visitor:
     db_visitor = Visitor(**visitor.model_dump())

@@ -8,7 +8,6 @@ class EmailTemplateBase(BaseModel):
     name: str = Field(..., min_length=1, max_length=255)
     subject: str = Field(..., min_length=1, max_length=500)
     body: str = Field(..., min_length=1)
-    placeholder_help: Optional[str] = None
     is_active: bool = True
 
 
@@ -20,7 +19,6 @@ class EmailTemplateUpdate(BaseModel):
     name: Optional[str] = Field(None, min_length=1, max_length=255)
     subject: Optional[str] = Field(None, min_length=1, max_length=500)
     body: Optional[str] = Field(None, min_length=1)
-    placeholder_help: Optional[str] = None
     is_active: Optional[bool] = None
 
 

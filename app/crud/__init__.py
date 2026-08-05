@@ -14,6 +14,7 @@ from .email_template import (
     get_email_templates,
     create_email_template,
     update_email_template,
+    send_emails,
     delete_email_template,
 )
 from .visitor import (

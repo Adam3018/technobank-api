@@ -33,6 +33,10 @@ def update_email_template(db: Session, email_template_id: int, email_template: E
     return db_email_template
 
 
+def send_emails(db: Session, email_template_id: int) -> EmailTemplate | None:
+    return db.query(EmailTemplate).filter(EmailTemplate.id == email_template_id).first()
+
+ 
 def delete_email_template(db: Session, email_template_id: int) -> bool:
     db_email_template = db.query(EmailTemplate).filter(EmailTemplate.id == email_template_id).first()
     if db_email_template:
