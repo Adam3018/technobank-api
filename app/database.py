@@ -7,7 +7,7 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 from typing import Generator
 
 # SQLite database URL
-SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
+SQLALCHEMY_DATABASE_URL = "sqlite:///./TechnoBankHermes.db"
 
 # Create engine
 engine = create_engine(
