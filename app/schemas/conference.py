@@ -1,24 +1,29 @@
 """Pydantic schemas for conferences."""
 
-from datetime import date, time
-from typing import Optional
+from datetime import datetime
+from typing import Optional, List
 from pydantic import BaseModel, Field
+
+
+class AgendaItem(BaseModel):
+    speaker_id: Optional[int] = None
+    title: str = Field(..., min_length=1, max_length=255)
+    start_time: str
+    end_time: Optional[str] = None
+    type: str = Field(default="talk", max_length=50)
 
 
 class ConferenceBase(BaseModel):
     name: str = Field(..., min_length=1, max_length=255)
-    short_name: Optional[str] = Field(None, max_length=100)
     description: Optional[str] = None
-    conference_date: date
-    start_time: time
-    end_time: Optional[time] = None
+    start_time: datetime
+    end_time: Optional[datetime] = None
     venue: Optional[str] = Field(None, max_length=255)
     address: Optional[str] = Field(None, max_length=500)
     organizer: Optional[str] = Field(None, max_length=255)
     status: str = Field(default="draft", max_length=50)
-    is_public: bool = True
-    max_attendees: Optional[int] = Field(None, ge=1)
-    notes: Optional[str] = None
+    agenda: Optional[List[AgendaItem]] = None
+    visitor_ids: Optional[List[int]] = []
 
 
 class ConferenceCreate(ConferenceBase):
@@ -27,18 +32,15 @@ class ConferenceCreate(ConferenceBase):
 
 class ConferenceUpdate(BaseModel):
     name: Optional[str] = Field(None, min_length=1, max_length=255)
-    short_name: Optional[str] = Field(None, max_length=100)
     description: Optional[str] = None
-    conference_date: Optional[date] = None
-    start_time: Optional[time] = None
-    end_time: Optional[time] = None
+    start_time: Optional[datetime] = None
+    end_time: Optional[datetime] = None
     venue: Optional[str] = Field(None, max_length=255)
     address: Optional[str] = Field(None, max_length=500)
     organizer: Optional[str] = Field(None, max_length=255)
     status: Optional[str] = Field(None, max_length=50)
-    is_public: Optional[bool] = None
-    max_attendees: Optional[int] = Field(None, ge=1)
-    notes: Optional[str] = None
+    agenda: Optional[List[AgendaItem]] = None
+    visitor_ids: Optional[List[int]] = None
 
 
 class Conference(ConferenceBase):

@@ -1,6 +1,6 @@
 """Conference model for TechnoBank events."""
 
-from sqlalchemy import Column, Integer, String, Text, Date, Time, Boolean
+from sqlalchemy import Column, Integer, String, Text, DateTime, JSON
 from app.database import Base
 
 
@@ -11,15 +11,12 @@ class Conference(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String(255), nullable=False, index=True)
-    short_name = Column(String(100), nullable=True, index=True)
     description = Column(Text, nullable=True)
-    conference_date = Column(Date, nullable=False)
-    start_time = Column(Time, nullable=False)
-    end_time = Column(Time, nullable=True)
+    start_time = Column(DateTime, nullable=False)
+    end_time = Column(DateTime, nullable=True)
     venue = Column(String(255), nullable=True)
     address = Column(String(500), nullable=True)
     organizer = Column(String(255), nullable=True)
     status = Column(String(50), default="draft", nullable=False)
-    is_public = Column(Boolean, default=True)
-    max_attendees = Column(Integer, nullable=True)
-    notes = Column(Text, nullable=True)
+    agenda = Column(JSON, nullable=True)
+    visitor_ids = Column(JSON, nullable=True)  # list of invited visitor IDs
