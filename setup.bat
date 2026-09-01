@@ -22,7 +22,7 @@ echo Python is installed. Creating virtual environment...
 
 REM Create virtual environment
 if not exist "venv" (
-    python -m venv venv
+    py -3.12 -m venv venv
     echo Virtual environment created
 ) else (
     echo Virtual environment already exists

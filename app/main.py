@@ -25,6 +25,13 @@ app = FastAPI(
     version="1.0.0"
 )
 
+# Uploads directory for floor plans
+app.mount(
+    "/uploads",
+    StaticFiles(directory="uploads"),
+    name="uploads"
+)
+
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
@@ -36,6 +43,7 @@ app.add_middleware(
 
 # Include API routers
 app.include_router(router)
+
 
 
 @app.get("/health", tags=["health"])

@@ -10,13 +10,65 @@ class Conference(Base):
     __tablename__ = "conferences"
 
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String(255), nullable=False, index=True)
-    description = Column(Text, nullable=True)
-    start_time = Column(DateTime, nullable=False)
-    end_time = Column(DateTime, nullable=True)
-    venue = Column(String(255), nullable=True)
-    address = Column(String(500), nullable=True)
-    organizer = Column(String(255), nullable=True)
-    status = Column(String(50), default="draft", nullable=False)
-    agenda = Column(JSON, nullable=True)
-    visitor_ids = Column(JSON, nullable=True)  # list of invited visitor IDs
+
+    name = Column(
+        String(255),
+        nullable=False,
+        index=True
+    )
+
+    description = Column(
+        Text,
+        nullable=True
+    )
+
+    start_time = Column(
+        DateTime,
+        nullable=False
+    )
+
+    end_time = Column(
+        DateTime,
+        nullable=True
+    )
+
+    venue = Column(
+        String(255),
+        nullable=True
+    )
+
+    address = Column(
+        String(500),
+        nullable=True
+    )
+
+    organizer = Column(
+        String(255),
+        nullable=True
+    )
+
+    status = Column(
+        String(50),
+        default="draft",
+        nullable=False
+    )
+
+    agenda = Column(
+        JSON,
+        nullable=True
+    )
+
+    visitor_ids = Column(
+        JSON,
+        nullable=True
+    )
+
+    # Floor plan image URL/path
+    floor_plan_url = Column(String(1000), nullable=True)
+
+
+    # Booth rectangle definitions
+    floor_plan_booths = Column(
+        JSON,
+        nullable=True
+    )
