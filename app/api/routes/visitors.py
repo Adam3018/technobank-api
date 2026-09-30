@@ -65,8 +65,12 @@ def list_visitors(
     filters = json.loads(filter) if filter else {}
     name_filter = filters.get("name")
     company_filter = filters.get("company")
+    clearance_filter = filters.get("clearance_level")   
 
     query = db.query(VisitorModel)
+
+    if clearance_filter:                                 
+        query = query.filter(VisitorModel.clearance_level == clearance_filter)
 
     # Dynamic Sorting (applied before fuzzy filtering so it still works on the base query)
     field_map = {
