@@ -1,53 +1,40 @@
+# TechnoBank API
+
+FastAPI CRUD backend for TechnoBank.
+
 ## Installation
 
-1. Create a virtual environment:
+**Windows:**
 ```bash
-python -m venv venv
+setup.bat
 ```
 
-2. Activate the virtual environment:
-   - Windows: `venv\Scripts\activate`
-   - macOS/Linux: `source venv/bin/activate`
-
-3. Install dependencies:
+**Linux/macOS:**
 ```bash
-pip install -r requirements.txt
+chmod +x setup.sh
+./setup.sh
 ```
 
-## Running the Application
+## Running
 
-### Development Mode
+Activate venv and start server:
 ```bash
+source venv/bin/activate  # or venv\Scripts\activate on Windows
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-The application will be available at `http://localhost:8000`
-
-### Interactive API Documentation
-- Swagger UI: http://localhost:8000/docs
-- ReDoc: http://localhost:8000/redoc
+API docs: http://localhost:8000/docs
 
 ## Database
 
-The application uses SQLite by default. The database file (`test.db`) is automatically created on first run.
-
-To use a different database:
-1. Update `SQLALCHEMY_DATABASE_URL` in `app/database.py`
-2. Install the appropriate database driver for your chosen database
+SQLite (`test.db`) by default. Update `SQLALCHEMY_DATABASE_URL` in `app/database.py` to use a different database.
 
 ## Development
 
-### Adding New Models
-1. Create a model class in `app/models/`
-2. Create schemas in `app/schemas/`
-3. Create CRUD operations in `app/crud/`
-4. Create routes in `app/api/routes/`
-5. Include the router in `app/main.py`
-
-### Testing
-Run tests with pytest:
-```bash
-pytest
+- Models: `app/models/`
+- Schemas: `app/schemas/`
+- CRUD: `app/crud/`
+- Routes: `app/api/routes/`
 ```
 
 ## Production Deployment

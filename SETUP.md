@@ -1,53 +1,26 @@
-# SETUP instructions
+# Setup
 
-This document explains how to create and use a single virtual environment located in the `technobank-api` folder and how to start the application.
+## Requirements
+- Python 3.8+ installed
 
-## Prerequisites
-
-- Python 3.8+ installed. Download: https://www.python.org/downloads/
-- When installing on Windows, check "Add Python to PATH".
-
-## Windows (recommended)
-
-1. Open PowerShell or Command Prompt and change into the project API folder:
-
-```powershell
-cd D:\TechnoBank2.0\technobank-api
+## Windows
+```bash
+setup.bat
 ```
 
-2. Create the virtual environment (one time):
-
-```powershell
-python -m venv venv
+## Linux/macOS
+```bash
+chmod +x setup.sh
+./setup.sh
 ```
 
-3. Activate the virtual environment:
-
-- PowerShell (use this if you prefer PS):
-
-```powershell
-.\venv\Scripts\Activate.ps1
-# If you see an execution policy error, run once as admin:
-# Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+## Run
+```bash
+source venv/bin/activate  # or venv\Scripts\activate on Windows
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-- Command Prompt (cmd.exe):
-
-```cmd
-venv\Scripts\activate.bat
-```
-
-4. Install dependencies into the `venv`:
-
-```powershell
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-```
-
-5. Start the application (recommended to use the venv python to avoid PATH issues):
-
-```powershell
-python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+View API docs: http://localhost:8000/docs
 # or explicitly: .\venv\Scripts\python.exe -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
